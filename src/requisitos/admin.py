@@ -18,10 +18,6 @@ class DesenvolvimentoInline(admin.TabularInline):
     model = Desenvolvimento
     extra = 1
 
-class ModeloIntermediarioInline(admin.TabularInline):
-    model = ModeloIntermediario
-    extra = 1
-
 class TarefaInline(admin.TabularInline):
     model = Tarefa
     extra = 1
@@ -30,8 +26,9 @@ class TarefaInline(admin.TabularInline):
 class MetaModeloAdmin(admin.ModelAdmin):
     list_display = ('descricao',)
     search_fields = ['descricao']
-    inlines = [AmbientalInline, OrganizacionalInline, GerencialInline, DesenvolvimentoInline, ModeloIntermediarioInline]
+    inlines = [AmbientalInline, OrganizacionalInline, GerencialInline, DesenvolvimentoInline]
     list_per_page = 20
+    filter_horizontal = ('modelos_intermediarios',)
 
 # Admin para o modelo Gerencial
 class GerencialAdmin(admin.ModelAdmin):
