@@ -58,7 +58,7 @@ class ModeloIntermediario(models.Model):
     """
     Este modelo serve como um modelo intermediário para capturar informações que são comuns entre diferentes Meta-Modelos.
     """
-    meta_modelo = models.ForeignKey(MetaModelo, related_name='modelos_intermediarios', on_delete=models.CASCADE)
+    meta_modelos = models.ManyToManyField(MetaModelo, related_name='modelos_intermediarios')
     informacao_comum = models.TextField()
 
 class Tarefa(models.Model):
